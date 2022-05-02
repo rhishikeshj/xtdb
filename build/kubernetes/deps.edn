@@ -1,0 +1,23 @@
+{:paths ["resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.3"}
+
+        ;; Logging
+        org.slf4j/slf4j-api {:mvn/version "1.7.29"}
+        ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
+
+        ;; XTDB
+        com.xtdb/xtdb-core {:mvn/version "1.20.0"}
+        com.xtdb/xtdb-rocksdb {:mvn/version "1.20.0"}
+        com.xtdb/xtdb-http-server {:mvn/version "1.20.0"}
+        com.xtdb/xtdb-jdbc {:mvn/version "1.20.0"}
+        com.xtdb/xtdb-kafka {:mvn/version "1.20.0"}
+        org.postgresql/postgresql {:mvn/version "42.2.18"}
+        org.rocksdb/rocksdbjni {:mvn/version "6.29.4.1"}
+        com.fasterxml.jackson.core/jackson-core {:mvn/version "2.13.2"}
+        com.fasterxml.jackson.core/jackson-databind {:mvn/version  "2.13.2"}
+        org.xerial.snappy/snappy-java {:mvn/version "1.1.8.4"}}
+
+ :aliases {:uberjar {:deps {io.github.seancorfield/build-clj {:git/tag "v0.6.7" :git/sha "22c2d09"}}
+                     :exec-fn org.corfield.build/uber
+                     :exec-args {:main xtdb.main
+                                 :ns-compile [xtdb.main]}}}}

@@ -1,0 +1,13 @@
+{:xtdb/tx-log {:xtdb/module xtdb.kafka/->tx-log
+               :kafka-config {:bootstrap-servers "kafka:9092"}
+               :tx-topic-opts {:topic-name "crux-tx-logs"}
+               :poll-wait-duration "PT1S"}
+ :xtdb/document-store {:xtdb/module xtdb.jdbc/->document-store
+                       :connection-pool {:dialect {:xtdb/module xtdb.jdbc.psql/->dialect}
+                                         :pool-opts {} ; Dont need this right now
+                                         :db-spec {:host "postgres"
+                                                   :port "5432"
+                                                   :dbname "crux-document-store"
+                                                   :user "postgres"
+                                                   :password "postgres"}}}
+ :xtdb.http-server/server {:port 3000}}
